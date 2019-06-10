@@ -1,0 +1,5 @@
+# .travis.yml
+language: java
+script: true
+jdk:
+  - openjdk8
