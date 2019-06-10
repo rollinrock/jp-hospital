@@ -15,5 +15,5 @@ before_install:
 after_success:
 #- ssh root@101.71.157.173 -p 40022 'echo \'script suceeded!\''
 #  - for name in $(find $TRAVIS_BUILD_DIR -name '*.jar'); do echo '$name' >> ;  done
-  - scp -P40022 $TRAVIS_BUILD_DIR/target/*.jar root@101.71.157.173:/root/apps/
-  - cd apps && ./startup.sh
+  - scp -P40022 $TRAVIS_BUILD_DIR/target/*.jar root@101.71.157.173:/root/apps
+  - cd apps && sh startup.sh
