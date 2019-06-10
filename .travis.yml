@@ -10,4 +10,4 @@ before_install:
 - echo -e "Host 101.71.157.173\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 after_success:
-  - ssh travis@101.71.157.173 -p 40022 'cd /root/apps && git pull'
+  - ssh travis@101.71.157.173 -p 40022 'cd /root/workspace && git pull'
