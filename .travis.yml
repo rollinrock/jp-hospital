@@ -2,7 +2,9 @@ language: java
 jdk: openjdk8
 addons:
   ssh_known_hosts: 101.71.157.173:40022
-script: ./mvnw clean package -B
+script:
+- ./mvnw clean package -B
+- scp -P40022 $TRAVIS_BUILD_DIR/*.jar root@101.71.157.173:/root/apps/
 before_install:
 - openssl aes-256-cbc -K $encrypted_bd500e817882_key -iv $encrypted_bd500e817882_iv
   -in id_rsa_travis.enc -out ~/.ssh/id_rsa_travis -d
@@ -11,4 +13,4 @@ before_install:
 
 
 after_success:
-  - ssh root@101.71.157.173 -p 40022 'cd workspace && git clone https://github.com/rollinrock/jp-hospital.git'
+  - ssh root@101.71.157.173 -p 40022 'echo \'script suceeded!\''
