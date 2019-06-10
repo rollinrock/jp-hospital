@@ -1,8 +1,8 @@
 language: java
-jdk:
-- openjdk8
-script:
-- "./mvnw clean package -B"
+jdk: openjdk8
+addons:
+  ssh_known_hosts: 101.71.157.173
+script: ./mvnw clean package -B
 before_install:
 - openssl aes-256-cbc -K $encrypted_bd500e817882_key -iv $encrypted_bd500e817882_iv
   -in id_rsa_travis.enc -out ~/.ssh/id_rsa_travis -d
@@ -10,4 +10,4 @@ before_install:
 - echo -e "Host 101.71.157.173\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 
 after_success:
-  - ssh travis@101.71.157.173 -p 40022 'cd /root/workspace && git pull'
+  - ssh travis@101.71.157.173 -p 40022
