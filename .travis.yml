@@ -11,4 +11,4 @@ before_install:
 
 
 after_success:
-  - ssh root@101.71.157.173 -p 40022 'cd workspace && git pull'
+  - ssh root@101.71.157.173 -p 40022 'cd workspace && git clone https://github.com/rollinrock/jp-hospital.git'
