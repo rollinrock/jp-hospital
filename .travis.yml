@@ -1,9 +1,24 @@
 # https://docs.travis-ci.com/user/languages/java/
 language: java
 jdk: openjdk8
+# 缓存maven相关库
 cache:
   directories:
     - $HOME/.m2
+
+# 在trusty环境中安装msyql5.7
+addons:
+  apt:
+    sources:
+      - mysql-5.7-trusty
+    packages:
+      - mysql-server
+      - mysql-client
+
+services: mysql
+
+before_script:
+  - sudo echo '127.0.0.1 db.test.mysql' >> /etc/hosts
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_bd500e817882_key -iv $encrypted_bd500e817882_iv
@@ -11,6 +26,10 @@ before_install:
   - chmod 600 ~/.ssh/id_rsa_travis
   - echo -e "Host 101.71.157.173\n\tIdentityFile ~/.ssh/id_rsa_travis\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh root@101.71.157.173 -p 40022 'cd /root/apps && rm -f jp-hospital.jar && rm -f startup.log'
+  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('F*f6e*hS') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+  - sudo mysql_upgrade -u root -pF*f6e*hS
+  - sudo service mysql restart
+  - sudo mysql -e "create database if not exists hospital default character set = 'utf8mb4';"
 
 after_success:
   - scp -P 40022 $TRAVIS_BUILD_DIR/target/jp-hospital.jar root@101.71.157.173:/root/apps
