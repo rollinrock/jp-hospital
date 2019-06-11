@@ -36,8 +36,4 @@ after_success:
   - scp -P 40022 $TRAVIS_BUILD_DIR/target/jp-hospital.jar root@101.71.157.173:/root/apps
   - ssh root@101.71.157.173 -p 40022 'cd /root/apps && sh startup.sh'
 notifications:
-  email:
-    on_failure: always
-    on_success: never
-    recipients:
-      - caoj30@chinaunicom.cn
+  webhooks: https://oapi.dingtalk.com/robot/send?access_token=6162f363e225465975400de7e7225e721a2598aea192685f8409880ce0b15e77
