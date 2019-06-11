@@ -57,6 +57,7 @@
     </dependencies>
 
     <build>
+        <finalName>jp-hospital</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

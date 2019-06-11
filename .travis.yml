@@ -1,7 +1,5 @@
 language: java
 jdk: openjdk8
-addons:
-  ssh_known_hosts: 101.71.157.173:40022
 script:
   - ./mvnw clean package -B
 
@@ -13,5 +11,5 @@ before_install:
 
 
 after_success:
-  - scp -f -v -P40022 $TRAVIS_BUILD_DIR/target/*.jar root@101.71.157.173:/root/apps
+  - scp -f -v -P40022 $TRAVIS_BUILD_DIR/target/jp-hospital.jar root@101.71.157.173:/root/apps
   - ssh root@101.71.157.173 -p 40022 'cd apps && sh startup.sh'
