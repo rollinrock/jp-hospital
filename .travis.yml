@@ -16,10 +16,6 @@ addons:
       - mysql-client
 # 启用超级管理员
 sudo: required
-#services: mysql
-
-before_script:
-  - sudo echo "127.0.0.1 db.test.mysql" >> /etc/hosts
 
 before_install:
   - openssl aes-256-cbc -K $encrypted_bd500e817882_key -iv $encrypted_bd500e817882_iv
@@ -30,6 +26,7 @@ before_install:
   - sudo mysql -e "create database if not exists hospital default character set = 'utf8mb4';use mysql; update user set authentication_string=PASSWORD('F*f6e*hS') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
   - sudo mysql_upgrade -u root -pF*f6e*hS
   - sudo service mysql restart
+  - sudo echo "127.0.0.1 db.test.mysql" >> /etc/hosts
 #  - sudo mysql -e "create database if not exists hospital default character set = 'utf8mb4';"
 
 after_success:
