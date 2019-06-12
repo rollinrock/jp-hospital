@@ -15,8 +15,6 @@ addons:
       - mysql-server
       - mysql-client
 
-sudo: required
-
 before_install:
   - openssl aes-256-cbc -K $encrypted_bd500e817882_key -iv $encrypted_bd500e817882_iv
     -in id_rsa_travis.enc -out ~/.ssh/id_rsa_travis -d

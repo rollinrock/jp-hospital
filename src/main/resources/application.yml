@@ -9,7 +9,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     platform: mysql
-    ###数据源的其他配置
     initialSize: 5
     minIdle: 5
     maxActive: 20
@@ -21,7 +20,6 @@ spring:
     testOnBorrow: false
     testOnReturn: false
     poolPreparedStatements: true
-    ### 配置监控统计拦截的filters，去掉后监控界面sql无法统计，'wall'用于防火墙
     filters:
       commons-log.connection-logger-name: stat,wall,log4j
     maxPoolPreparedStatementPerConnectionSize: 20
