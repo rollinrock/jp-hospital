@@ -14,6 +14,7 @@ addons:
     packages:
       - mysql-server
       - mysql-client
+
 # 启用超级管理员
 sudo: required
 
