@@ -8,11 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import studio.rollinrock.cnunicom.jphospital.entityjpa.UseMp;
-import studio.rollinrock.cnunicom.jphospital.repository.UseMpRepository;
 import studio.rollinrock.cnunicom.jphospital.services.SmsVerificationCodeService;
 import studio.rollinrock.cnunicom.jphospital.services.UserLoginoutService;
-import java.util.List;
 
 @RestController
 @RequestMapping("/user")
@@ -24,18 +21,10 @@ public class UserLoginOutController {
     @Autowired
     private UserLoginoutService userLoginoutService;
 
-    @Autowired(required = false)
-    private UseMpRepository useMpRepository;
     @ApiOperation(value = "发送短信验证码")
-//    @PostMapping("/sms_verify_code")
-    @GetMapping("/sms_verify_code")
+    @PostMapping("/sms_verify_code")
     public HttpResult<Boolean> getSmsVerifyCode(@ApiParam(name = "用户手机号", required = true) String mobile){
-        int headerNum=Integer.parseInt(mobile.substring(0,3));
-        List<UseMp> useMps=useMpRepository.findAllByHeaderNum(headerNum);
-        if(useMps!=null&&useMps.size()>0){
-            return HttpResult.succeedWithData(smsVerificationCodeService.sendByMobile(mobile));
-        }
-        return  HttpResult.failWithReason("当前非联通号码暂无法开通");
+        return HttpResult.succeedWithData(smsVerificationCodeService.sendByMobile(mobile));
     }
 
     @ApiOperation(value = "用户登录")

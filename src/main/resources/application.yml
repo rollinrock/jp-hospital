@@ -29,4 +29,12 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: update
+
+
+
+
+sms:
+  vc:
+    alive-expiry: 600000
+    resend-expiry: 60000
 debug: true
