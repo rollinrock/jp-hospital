@@ -18,10 +18,10 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserLoginOutController {
 
-    @Autowired(required = false)
+    @Autowired
     private SmsVerificationCodeService smsVerificationCodeService;
 
-    @Autowired(required = false)
+    @Autowired
     private UserLoginoutService userLoginoutService;
 
     @Autowired(required = false)
@@ -45,7 +45,7 @@ public class UserLoginOutController {
         return HttpResult.succeedWithData(userLoginoutService.login(mobile, smsCode));
     }
 
-    @ApiParam(value = "用户登出")
+    @ApiOperation(value = "用户登出")
     @PostMapping("/logout")
     public HttpResult<Boolean> userLogout(@ApiParam(name = "用户手机号", required = true) String mobile){
         return HttpResult.succeedWithData(userLoginoutService.logout(mobile));
