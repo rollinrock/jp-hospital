@@ -1,6 +1,5 @@
 server:
   port: 8088
-
 spring:
   datasource:
     url: jdbc:mysql://${db_host:localhost}:${db_port:3306}/hospital?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false&verifyServerCertificate=false&autoReconnct=true&autoReconnectForPools=true&allowMultiQueries=true
@@ -25,3 +24,4 @@ spring:
     maxPoolPreparedStatementPerConnectionSize: 20
     useGlobalDataSourceStat: true
     connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+debug: true
