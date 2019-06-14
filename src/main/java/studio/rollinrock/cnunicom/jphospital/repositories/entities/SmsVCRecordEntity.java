@@ -22,8 +22,16 @@ public class SmsVCRecordEntity {
     private String mobile;
 
     @Column(name = "verification_code", nullable = false, length = 8)
-    private short verificationCode;
+    private String verificationCode;
 
     @Column(nullable = false)
     private Date createTime;
+
+    public static SmsVCRecordEntity newIns(String mobile, String verificationCode) {
+        SmsVCRecordEntity entity = new SmsVCRecordEntity();
+        entity.setMobile(mobile);
+        entity.setVerificationCode(verificationCode);
+        entity.setCreateTime(new Date());
+        return entity;
+    }
 }

@@ -7,7 +7,7 @@ import studio.rollinrock.cnunicom.jphospital.services.SmsFilter;
  * 中国联通号码段过滤
  */
 @Component
-public class CnunicomMobileMatchFilter implements SmsFilter {
+public class CnunicomMobileMatchFilter extends SmsFilterAdapter implements SmsFilter {
     @Override
     public boolean allow(String mobile) {
         //todo 示例判断：是否以156开头

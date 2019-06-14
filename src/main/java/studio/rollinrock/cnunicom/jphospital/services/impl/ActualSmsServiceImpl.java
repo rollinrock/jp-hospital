@@ -97,7 +97,16 @@ public class ActualSmsServiceImpl implements ActualSmsService {
 
     @Override
     public boolean send(String mobile, String content) {
-        return false;
+//        try {
+//            Response<ResponseBody> resp = ytxSmsApi.sendOk(YtxSmsRequest.newVCInsBasedOnTestAccount(mobile, content).manipulateMap()).execute();
+//            log.info("短信发送结果: {}", resp.body().string());
+//            // todo 判断短信渠道商返回信息是否成功
+//        } catch (IOException e) {
+//            log.error("发送手机[{}]短信失败：", e);
+//            throw new IllegalStateException("发送短信失败", e);
+//        }
+
+        return true;
     }
 
     @Override
