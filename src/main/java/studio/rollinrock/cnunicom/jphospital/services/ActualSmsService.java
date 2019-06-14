@@ -1,6 +1,9 @@
 package studio.rollinrock.cnunicom.jphospital.services;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public interface ActualSmsService {
 
@@ -26,8 +29,11 @@ public interface ActualSmsService {
 
     default boolean checkMobile(String mobile){
         // todo 校验手机号码是否合法
-
-        return true;
+        String regex = "^((13[0-2])|(14[5])|(15([5-6]))|(16[6])|(17[5-6])|(18[5-6]))\\d{8}$";
+        if(Pattern.matches(regex, mobile)) {
+            return true;
+        }
+        return  false;
     }
 
     boolean send(String mobile, String content);

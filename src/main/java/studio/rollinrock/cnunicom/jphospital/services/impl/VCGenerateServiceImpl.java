@@ -8,6 +8,7 @@ public class VCGenerateServiceImpl implements VCGenerateService {
     @Override
     public String genRandomNumIn6(long aliveExpiry) {
         //todo 实现
-        return "378492";
+        int code = new java.util.Random().nextInt(900000)+100000;
+        return String.valueOf(code);
     }
 }
