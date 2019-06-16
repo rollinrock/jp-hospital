@@ -7,11 +7,14 @@ import org.springframework.stereotype.Repository;
 import studio.rollinrock.cnunicom.jphospital.repositories.entities.SmsVCRecordEntity;
 
 import java.util.Date;
+import java.util.List;
 
 @Repository
 public interface SmsVCRecordRepository extends CrudRepository<SmsVCRecordEntity, Long> {
 
     @Query(value = "select r.create_time from t_sms_vc_record r where r.mobile = :mobile order by create_time desc limit 1", nativeQuery = true)
     Date selectLatestVCCreateTime(@Param("mobile") String mobile);
+
+    SmsVCRecordEntity findFirstByMobileOrderByCreateTimeDesc(String mobile);
 
 }

@@ -2,6 +2,7 @@ package studio.rollinrock.cnunicom.jphospital.repositories.entities;
 
 
 import lombok.Data;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -24,14 +25,21 @@ public class SmsVCRecordEntity {
     @Column(name = "verification_code", nullable = false, length = 8)
     private String verificationCode;
 
+    @CreatedDate
     @Column(nullable = false)
     private Date createTime;
 
-    public static SmsVCRecordEntity newIns(String mobile, String verificationCode) {
+    @Column(name = "alive_expiry_in_mills", nullable = false)
+    private Long aliveExpiryInMills;
+
+    @Column(nullable = false)
+    private boolean usedOrNot = false;
+
+    public static SmsVCRecordEntity newIns(String mobile, String verificationCode, long aliveExpiryInMills) {
         SmsVCRecordEntity entity = new SmsVCRecordEntity();
         entity.setMobile(mobile);
         entity.setVerificationCode(verificationCode);
-        entity.setCreateTime(new Date());
+        entity.setAliveExpiryInMills(aliveExpiryInMills);
         return entity;
     }
 }

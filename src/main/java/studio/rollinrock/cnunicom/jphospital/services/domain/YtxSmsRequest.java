@@ -11,6 +11,7 @@ import java.util.Map;
 @Data
 public class YtxSmsRequest extends YtxBaseRequest{
 
+    //注意：该set方法实现一定不能删除，api需要通过gbk编码该字段
     public void setMessageContent(String messageContent) {
         try {
             this.messageContent = URLEncoder.encode(messageContent, "GBK");
@@ -34,28 +35,19 @@ public class YtxSmsRequest extends YtxBaseRequest{
     private String f;
 
 
-
-
-
-
     public Map<String, String> manipulateMap() {
-//        try {
-            Map<String, String> map = new HashMap<>();
-            map.put("SpCode", spCode);
-            map.put("LoginName", loginName);
-            map.put("Password", password);
-            map.put("MessageContent", messageContent);
-            map.put("MessageType", messageType);
-            map.put("UserNumber", userNumber);
-            map.put("SerialNumber", serialNumber);
-            map.put("ScheduleTime", scheduleTime);
-            map.put("ExtendAccessNum", extendAccessNum);
-            map.put("f", f);
-            return map;
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//            throw new IllegalStateException("编码失败");
-//        }
+        Map<String, String> map = new HashMap<>();
+        map.put("SpCode", spCode);
+        map.put("LoginName", loginName);
+        map.put("Password", password);
+        map.put("MessageContent", messageContent);
+        map.put("MessageType", messageType);
+        map.put("UserNumber", userNumber);
+        map.put("SerialNumber", serialNumber);
+        map.put("ScheduleTime", scheduleTime);
+        map.put("ExtendAccessNum", extendAccessNum);
+        map.put("f", f);
+        return map;
 
     }
 
@@ -86,9 +78,5 @@ public class YtxSmsRequest extends YtxBaseRequest{
         request.setExtendAccessNum("");
 
         return request;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(YtxSmsRequest.newVCInsBasedOnTestAccount("123", "132"));
     }
 }

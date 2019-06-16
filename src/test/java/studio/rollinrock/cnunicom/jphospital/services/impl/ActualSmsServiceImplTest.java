@@ -13,9 +13,5 @@ public class ActualSmsServiceImplTest extends JpHospitalApplicationTests {
     @Autowired
     private ActualSmsService actualSmsService;
 
-    @Ignore
-    @Test
-    public void sendVerificationCode() {
-        actualSmsService.sendVerificationCode("15657978981");
-    }
+
 }

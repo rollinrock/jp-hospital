@@ -14,6 +14,6 @@ public class UserLoginoutRepositoryTest extends JpHospitalApplicationTests {
     @Test
     public void saveTest() {
 
-        userLoginOutRepository.save(UserLoginOutRecordEntity.instantiate("13685760392", "login"));
+        userLoginOutRepository.save(UserLoginOutRecordEntity.newInsAsLogin("13685760392"));
     }
 }

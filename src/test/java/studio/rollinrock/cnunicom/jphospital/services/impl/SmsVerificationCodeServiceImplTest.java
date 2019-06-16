@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.annotation.Commit;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.util.Assert;
 import studio.rollinrock.cnunicom.jphospital.JpHospitalApplicationTests;
 import studio.rollinrock.cnunicom.jphospital.exceptions.UserWarningException;
@@ -17,6 +18,7 @@ public class SmsVerificationCodeServiceImplTest extends JpHospitalApplicationTes
     @Autowired
     private SmsVerificationCodeService smsVerificationCodeService;
 
+    @Rollback
     @Test
     public void sendByMobile() {
         Assert.isTrue(smsVerificationCodeService.sendByMobile("15657978981"), "短信验证码服务功能异常");

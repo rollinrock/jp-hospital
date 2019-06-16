@@ -16,7 +16,7 @@ public class DefaultControllerAdvice {
     @ExceptionHandler
     public HttpResult<Void> handleIllegalArgumentException(HttpServletRequest request,
                                                            IllegalArgumentException e){
-        log.error("uri:{} => illegal argument:", request.getRequestURI(), e);
+        log.error("uri:{} => illegal argument:", request.getRequestURI(), e.getMessage(), e.getCause());
         return HttpResult.failWithReason("illegal argument:" + e.getMessage());
     }
 
@@ -24,7 +24,7 @@ public class DefaultControllerAdvice {
     @ExceptionHandler
     public HttpResult<Void> handleException(HttpServletRequest request,
                                             Exception e) {
-        log.error("uri:{} => exception:", request.getRequestURI(), e);
+        log.error("uri:{} => exception:", request.getRequestURI(), e.getMessage(), e.getCause());
         return HttpResult.failWithReason("internal server error");
     }
 }
