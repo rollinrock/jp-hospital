@@ -30,10 +30,10 @@ public class MedicalReportUploadRecordEntity {
     private Date createTime;
 
 
-    public static MedicalReportUploadRecordEntity newIns(String host, String ownerMobile, String fdfsPath){
+    public static MedicalReportUploadRecordEntity newIns(String ownerMobile, String fdfsPath){
         MedicalReportUploadRecordEntity entity = new MedicalReportUploadRecordEntity();
         entity.setOwnerMobile(Objects.requireNonNull(ownerMobile));
-        entity.setFdfsPath(host.concat(Objects.requireNonNull(fdfsPath)));
+        entity.setFdfsPath(Objects.requireNonNull(fdfsPath));
 
         return entity;
     }

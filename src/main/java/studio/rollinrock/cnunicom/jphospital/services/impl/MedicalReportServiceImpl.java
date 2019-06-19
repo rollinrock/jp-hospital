@@ -50,7 +50,7 @@ public class MedicalReportServiceImpl implements MedicalReportService {
         if (null == storePath) throw new UserWarningException("1", "文件上传失败");
 
         //1. 保存文件路径到数据库
-        mrUploadRecordRepository.save(MedicalReportUploadRecordEntity.newIns("http://101.71.157.173:8088/", patientMobile, storePath.getFullPath()));
+        mrUploadRecordRepository.save(MedicalReportUploadRecordEntity.newIns(patientMobile, storePath.getFullPath()));
         //2.
 
         log.info("文件上传结果：group[{}],path[{}],fullPath[{}]", storePath.getGroup(), storePath.getPath(), storePath.getFullPath());
