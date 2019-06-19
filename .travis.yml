@@ -15,6 +15,7 @@ cache:
 #      - mysql-server
 #      - mysql-client
 script: true
+install: true
 services:
   - mysql
 
@@ -24,10 +25,10 @@ before_install:
   - chmod 600 ~/.ssh/id_rsa_travis
   - echo -e "Host 101.71.157.173\n\tIdentityFile ~/.ssh/id_rsa_travis\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - ssh root@101.71.157.173 -p 40022 'cd /root/apps && rm -f jp-hospital.jar && rm -f startup.log'
-  - sudo mysql -e "create database if not exists hospital default character set = 'utf8mb4';"
-  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('F*f6e*hS') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
-  - sudo mysql_upgrade -u root -pF*f6e*hS
-  - sudo service mysql restart
+#  - sudo mysql -e "create database if not exists hospital default character set = 'utf8mb4';"
+#  - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('F*f6e*hS') where User='root'; update user set plugin='mysql_native_password';FLUSH PRIVILEGES;"
+#  - sudo mysql_upgrade -u root -pF*f6e*hS
+#  - sudo service mysql restart
 
 after_success:
   - scp -P 40022 $TRAVIS_BUILD_DIR/target/jp-hospital.jar root@101.71.157.173:/root/apps
