@@ -7,12 +7,13 @@
 <body>
     <a href="show">返回文件上传页面</a>
     <div >
-        <ul>
+        <ul >
             <li th:each="report:${model.reports}">
                 <label>用户：<span th:text="${report.ownerMobile}"></span></label> <a th:href="${report.fdfsPath}">查看体检报告</a>
             </li>
 
         </ul>
+
     </div>
 
 </body>

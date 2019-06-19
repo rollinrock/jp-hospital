@@ -29,8 +29,9 @@ public class AdminMedicalReportController {
         return "admin/upload";
     }
     @GetMapping("/show_upload_result")
-    public String showPageOfUploadResult() {
-        return "admin/upload_result";
+    public ModelAndView showPageOfUploadResult(Model model) {
+        model.addAttribute("reports", medicalReportService.listAllReports());
+        return new ModelAndView("admin/upload_result", "model", model);
     }
     @GetMapping("/show_upload_result_test")
     public ModelAndView showPageOfUploadResultTest(Model model) {
@@ -43,11 +44,11 @@ public class AdminMedicalReportController {
 
     @ApiOperation(value = "上传pdf版本体检报告", notes = "rt")
     @PostMapping("/upload")
-    public ModelAndView upload(@ApiParam("体检报告所属人电话") String ownerMobile,
-                               @ApiParam("上传文件") @RequestParam("file") MultipartFile multipartFile, Model model) {
+    public String upload(@ApiParam("体检报告所属人电话") String ownerMobile,
+                               @ApiParam("上传文件") @RequestParam("file") MultipartFile multipartFile) {
         String path = medicalReportService.uploadReportByPdf(ownerMobile, multipartFile);
-        model.addAttribute("reports", Arrays.asList(medicalReportService.listAllReports()));
-        return new ModelAndView("redirect:show_upload_result", "model", model);
+//        model.addAttribute("reports", Arrays.asList(medicalReportService.listAllReports()));
+        return "redirect:show_upload_result";
     }
 
 
