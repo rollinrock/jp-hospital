@@ -37,7 +37,7 @@ public class AdminMedicalReportController {
     public ModelAndView showPageOfUploadResultTest(Model model) {
 
         model.addAttribute("reports", Arrays.asList(MedicalReportUploadRecordEntity.newIns(
-                 "13685760392", "/group1/M00/00/00/wKgpml0JotiAMHAGAAJG5SysSe8620.pdf"
+                 "13685760392", "group1/M00/00/00/wKgpml0JotiAMHAGAAJG5SysSe8620.pdf"
         )));
         return new ModelAndView("admin/upload_result", "model", model);
     }
