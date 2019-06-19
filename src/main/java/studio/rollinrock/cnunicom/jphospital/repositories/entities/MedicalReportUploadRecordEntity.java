@@ -3,6 +3,7 @@ package studio.rollinrock.cnunicom.jphospital.repositories.entities;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -10,6 +11,7 @@ import java.util.Objects;
 
 @Data
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "t_medical_report_upload_record")
 public class MedicalReportUploadRecordEntity {
 

@@ -3,6 +3,7 @@ package studio.rollinrock.cnunicom.jphospital.repositories.entities;
 
 import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -12,6 +13,7 @@ import java.util.Date;
  */
 @Data
 @Entity
+@EntityListeners(AuditingEntityListener.class)
 @Table(name = "t_sms_vc_record")
 public class SmsVCRecordEntity {
 
