@@ -25,7 +25,7 @@ public class AdminMedicalReportController {
 
     @GetMapping("/show")
     public String showPageOfUpload() {
-        return "/admin/upload";
+        return "admin/upload";
     }
 
     @ApiOperation(value = "上传pdf版本体检报告", notes = "rt")
@@ -34,7 +34,7 @@ public class AdminMedicalReportController {
                                @ApiParam("上传文件") @RequestParam("file") MultipartFile multipartFile, Model model) {
         String path = medicalReportService.uploadReportByPdf(ownerMobile, multipartFile);
         model.addAttribute("reports", Arrays.asList(medicalReportService.listAllReports()));
-        return new ModelAndView("redirect:/admin/upload_result", "model", model);
+        return new ModelAndView("redirect:admin/upload_result", "model", model);
     }
 
 
