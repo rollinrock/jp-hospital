@@ -15,7 +15,6 @@ cache:
 #      - mysql-server
 #      - mysql-client
 script: true
-install: true
 services:
   - mysql
 
