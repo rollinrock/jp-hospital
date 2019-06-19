@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>文件上传测试</title>
+</head>
+<body>
+    <form method="post" action="/medical_report/upload" enctype="multipart/form-data">
+        <label>用户手机：</label><input name="ownerMobile"type="text" />
+        <label>选择文件：</label><input name="file" type="file" />
+        <button type="submit">上传</button>
+    </form>
+
+</body>
+</html>
