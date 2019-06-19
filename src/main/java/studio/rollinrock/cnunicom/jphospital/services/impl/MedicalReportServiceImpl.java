@@ -39,7 +39,7 @@ public class MedicalReportServiceImpl implements MedicalReportService {
 
         StorePath storePath = null;
         try (InputStream is = medicalReport.getInputStream()) {
-            String fileName = medicalReport.getName();
+            String fileName = medicalReport.getOriginalFilename();
             String[] tokens = fileName.split("\\.");
             Arrays.stream(tokens).forEach(token -> log.info("文件分割token：{}", token));
             storePath = storageClient.uploadFile(is, medicalReport.getSize(), tokens[tokens.length - 1], metas);
