@@ -6,6 +6,9 @@ cache:
   directories:
     - $HOME/.m2
 
+branches:
+  only:
+    - dev
 # 在trusty环境中安装msyql5.7并直接启动
 #addons:
 #  apt:
