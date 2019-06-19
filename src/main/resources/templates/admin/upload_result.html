@@ -8,7 +8,7 @@
     <a href="upload.html">返回文件上传页面</a>
     <div >
         <ul>
-            <li th:each="report:${userModel.reports}">
+            <li th:each="report:${model.reports}">
                 <label>用户：<span th:text="#{report.ownerMobile}"></span></label> <p th:text="${report.fdfsPath}"></p>
             </li>
 
